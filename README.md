@@ -2,6 +2,10 @@
 
 **Live demo:** https://lattice.formgong.com · Download: the [latest release](https://github.com/formgong/lattice-template/releases/latest) zip.
 
+[![Deploy to Cloudflare](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/formgong/lattice-template) [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fformgong%2Flattice-template&project-name=lattice&repository-name=lattice)
+
+Each button copies the site to your GitHub and publishes it. Then replace `fk_your_access_key` in `index.html` of your copy with your Formgong access key (free at https://formgong.com/new) and commit: the host republishes on its own.
+
 Шаблон сайту-портфоліо з формою Formgong
 
 A dark, motion-led one-page site for a creative developer or a small studio. One `index.html`: no build step, no dependencies besides Google Fonts. The contact form posts to Formgong and shows "received" only when the server answers `success: true`; any other answer shows the server's message.
