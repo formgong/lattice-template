@@ -8,7 +8,7 @@ Each button copies the site to your GitHub and publishes it. Then replace `fk_yo
 
 Шаблон сайту-портфоліо з формою Formgong
 
-A dark, motion-led one-page site for a creative developer or a small studio. One `index.html`: no build step, no dependencies besides Google Fonts. The contact form posts to Formgong and shows "received" only when the server answers `success: true`; any other answer shows the server's message.
+A dark, motion-led one-page site for a creative developer or a small studio. One `index.html` plus an `img/` folder of project screenshots: no build step, no dependencies besides Google Fonts. The contact form posts to Formgong and shows "received" only when the server answers `success: true`; any other answer shows the server's message.
 
 ## English
 
@@ -23,6 +23,7 @@ A dark, motion-led one-page site for a creative developer or a small studio. One
 - Colours and fonts are CSS variables at the top of the `<style>` block (`--bg`, `--line`, `--grid`, `--accent`, `--font`).
 - Every border sits on a grid line. The script's `layout()` picks the cell (75px wide screens, 56px phones), the columns and rows for the window, and places each box by grid lines. Change the cell size there, not in CSS.
 - Studio name, contacts, projects, services and quotes are placeholders. Projects and services live in the `PROJECTS` and `SERVICES` arrays in the script; quotes are in the HTML.
+- Each project shows a desktop screenshot in the browser frame and a phone screenshot beside it: `img` and `phone` in its `PROJECTS` entry, plus `bg`, the frame colour shown while the image loads. Landscape 3:2 and portrait 2:3 images fit best; the phone shot is cropped from the left.
 - The clock reads `data-tz` (an IANA time zone such as `Europe/Lisbon`).
 
 **Motion**
@@ -33,6 +34,8 @@ A dark, motion-led one-page site for a creative developer or a small studio. One
 - Scroll drives the hero split, the pinned project switcher (wide screens), the about text, and the bottom progress line. Headings reveal with clip-path; numbers count up; quotes move one card at a time and stop on grid lines, pausing on hover.
 - With `prefers-reduced-motion: reduce` there is no intro, no marquee, no counting, and the orb stays still.
 
+**Images** — the twelve project screenshots (six sites, desktop and phone) were generated for this template with ChatGPT image generation (OpenAI) and saved as WebP, about 640 KB in all. The sites and brands in them are fictional. You may use them in your own site, but replace them with your own work before launch.
+
 **Credit** — the footer links to Formgong. You may remove it.
 
 ## Українська
@@ -41,6 +44,8 @@ A dark, motion-led one-page site for a creative developer or a small studio. One
 
 **Підключити форму:** створіть форму в кабінеті Formgong, скопіюйте ключ доступу й замініть ним `fk_your_access_key` в `index.html`. Якщо потрібна капча, вкажіть ключ Turnstile в атрибуті `data-sitekey` форми.
 
-**Під себе:** кольори й шрифти задано змінними на початку `<style>`. Кожна рамка стоїть на лінії сітки: розмір клітинки, кількість колонок і рядів рахує функція `layout()` у скрипті. Назва студії, контакти, проєкти, послуги й відгуки тут лише приклади. Проєкти й послуги лежать у масивах `PROJECTS` і `SERVICES` у скрипті.
+**Під себе:** кольори й шрифти задано змінними на початку `<style>`. Кожна рамка стоїть на лінії сітки: розмір клітинки, кількість колонок і рядів рахує функція `layout()` у скрипті. Назва студії, контакти, проєкти, послуги й відгуки тут лише приклади. Проєкти й послуги лежать у масивах `PROJECTS` і `SERVICES` у скрипті. Скріни проєктів (комп'ютер і телефон) лежать у папці `img/`: шляхи до них задано в полях `img` і `phone`.
 
 **Анімація:** блоки в'їжджають збоку, коли з'являються на екрані, а їхні рамки малюються з лівого верхнього кута; світла заставка з назвою, куля з частинок, що переходить між секціями, перемикання проєктів під час прокрутки, лічильники, стрічка відгуків. Якщо в системі ввімкнено зменшення руху, анімації вимикаються.
+
+**Зображення:** дванадцять скрінів вигаданих сайтів згенеровано для цього шаблону в ChatGPT (OpenAI) і збережено у WebP, разом близько 640 КБ. Їх можна використовувати, але перед запуском замініть їх своїми роботами.

@@ -162,19 +162,14 @@
   /* Work */
   .p-orb, .s-orb, .a-orb, .c-orb { position: relative; }
   .p-orb .mono, .s-orb .mono { position: absolute; left: 14px; bottom: 12px; }
-  .p-shot { position: relative; clip-path: inset(0); --m-bg: #10201d; --m-a: #43cabc; --m-c: #e8efe9; }
+  .p-shot { position: relative; clip-path: inset(0); --m-bg: #10201d; }
   .mock, .phone { position: absolute; background: var(--m-bg); transition: background-color .8s var(--ease); }
   .mock-dots { position: absolute; left: 10px; top: 9px; display: flex; gap: 5px; }
   .mock-dots i { width: 5px; height: 5px; border-radius: 50%; background: rgba(255, 255, 255, .25); }
-  .mb { position: absolute; transition: left .9s var(--ease), top .9s var(--ease), width .9s var(--ease), height .9s var(--ease), border-radius .9s var(--ease), background-color .8s var(--ease); }
-  .mb1 { background: var(--m-a); }
-  .mb2 { background: var(--m-c); }
-  .mb3, .mb4 { height: 3%; background: rgba(255, 255, 255, .16); }
-  .v0 .mb1 { left: 7%; top: 22%; width: 46%; height: 40%; } .v0 .mb2 { left: 60%; top: 22%; width: 32%; height: 60%; border-radius: 0; } .v0 .mb3 { left: 7%; top: 70%; width: 38%; } .v0 .mb4 { left: 7%; top: 78%; width: 26%; }
-  .v1 .mb1 { left: 0; top: 0; width: 100%; height: 50%; } .v1 .mb2 { left: 38%; top: 60%; width: 24%; height: 26%; border-radius: 50%; } .v1 .mb3 { left: 7%; top: 66%; width: 22%; } .v1 .mb4 { left: 71%; top: 66%; width: 22%; }
-  .v2 .mb1 { left: 7%; top: 20%; width: 30%; height: 64%; } .v2 .mb2 { left: 43%; top: 20%; width: 50%; height: 30%; border-radius: 0; } .v2 .mb3 { left: 43%; top: 58%; width: 44%; } .v2 .mb4 { left: 43%; top: 66%; width: 30%; }
-  .pb1 { left: 10%; top: 12%; width: 80%; height: 34%; background: var(--m-a); }
-  .pb2 { left: 10%; top: 54%; width: 55%; height: 4%; background: rgba(255, 255, 255, .2); }
+  .mock img, .phone img { position: absolute; left: 0; top: 0; width: 100%; height: 100%; object-fit: cover; object-position: top; opacity: 0; transform: scale(1.04); transition: opacity .8s var(--ease), transform 1.2s var(--ease); }
+  .mock img { top: 22px; height: calc(100% - 22px); }
+  .phone img { object-position: left top; }
+  .mock img.on, .phone img.on { opacity: 1; transform: none; }
   .p-thumbs { display: grid; grid-auto-rows: var(--u); align-content: start; overflow: hidden; }
   .p-thumbs button { font: 11px var(--mono); color: var(--dim); transition: background-color .3s, color .3s; }
   .p-thumbs button:hover { color: var(--text); }
@@ -340,8 +335,8 @@
       <a class="b btn cta" href="#contact" data-k="w-cta" data-rows="1">Start a project</a>
       <div class="b p-orb" data-k="p-orb" data-rows="4" data-orb="blob" data-orb-color="teal" data-orb-scale=".34"><span class="mono" data-p-meta aria-hidden="true"></span></div>
       <div class="b p-shot" data-k="p-shot" data-rows="4" aria-hidden="true">
-        <div class="b mock v0" data-mock><div class="mock-dots"><i></i><i></i><i></i></div><div class="mb mb1"></div><div class="mb mb2"></div><div class="mb mb3"></div><div class="mb mb4"></div></div>
-        <div class="b phone" data-phone><div class="mb pb1"></div><div class="mb pb2"></div></div>
+        <div class="b mock" data-mock><div class="mock-dots"><i></i><i></i><i></i></div></div>
+        <div class="b phone" data-phone></div>
       </div>
       <div class="p-thumbs" data-k="p-thumbs" data-rows="1" data-p-thumbs></div>
       <div class="b p-text" data-k="p-text" data-rows="5">
@@ -468,12 +463,12 @@
   function replay(el, cls) { el.classList.remove(cls); void el.offsetWidth; el.classList.add(cls); }
 
   var PROJECTS = [
-    { name: "kelp & co.", code: "KC", meta: "2026 · E-commerce · Astro", t: ["A web shop for a small seaweed skincare brand, built around ingredients and slow storytelling.", "Product pages load in under a second, and wholesale requests reach the right person."], c: ["#10201d", "#43cabc", "#e8efe9"] },
-    { name: "atlas rail", code: "AR", meta: "2025 · Booking · Nuxt", t: ["Route finder and booking flow for night trains across southern Europe.", "A calm interface for a stressful task: fewer steps, clear prices, honest delays."], c: ["#141a2b", "#6f8cff", "#d9e0ff"] },
-    { name: "mosaic clinic", code: "MC", meta: "2025 · Healthcare · WordPress", t: ["Website for a family dental clinic with online appointment requests.", "Accessible forms and plain language, tested with patients over sixty."], c: ["#1f1a17", "#d9a441", "#f4ead9"] },
-    { name: "ondra architects", code: "OA", meta: "2024 · Portfolio · Astro", t: ["Portfolio for an architecture practice that lets the photographs carry the page.", "Image-first layouts with scroll-linked transitions and a quiet project index."], c: ["#191919", "#cfcfcf", "#7a7a7a"] },
-    { name: "lumen festival", code: "LF", meta: "2024 · Event · Next.js", t: ["Site for a three-night light festival: programme, map and volunteer sign-up.", "The volunteer form handled the launch-week rush without losing a message."], c: ["#1a1024", "#c86bff", "#ffd3f4"] },
-    { name: "fieldnote", code: "FN", meta: "2023 · Product · SvelteKit", t: ["Launch site for a field journal app used by ecologists and hikers.", "Motion sketches of the app explain features before anyone reads a word."], c: ["#16201a", "#8fd17a", "#e6f2dc"] }
+    { name: "kelp & co.", code: "KC", meta: "2026 · E-commerce · Astro", t: ["A web shop for a small seaweed skincare brand, built around ingredients and slow storytelling.", "Product pages load in under a second, and wholesale requests reach the right person."], bg: "#10201d", img: "img/kelp.webp", phone: "img/kelp-phone.webp" },
+    { name: "atlas rail", code: "AR", meta: "2025 · Booking · Nuxt", t: ["Route finder and booking flow for night trains across southern Europe.", "A calm interface for a stressful task: fewer steps, clear prices, honest delays."], bg: "#141a2b", img: "img/atlas.webp", phone: "img/atlas-phone.webp" },
+    { name: "mosaic clinic", code: "MC", meta: "2025 · Healthcare · WordPress", t: ["Website for a family dental clinic with online appointment requests.", "Accessible forms and plain language, tested with patients over sixty."], bg: "#1f1a17", img: "img/mosaic.webp", phone: "img/mosaic-phone.webp" },
+    { name: "ondra architects", code: "OA", meta: "2024 · Portfolio · Astro", t: ["Portfolio for an architecture practice that lets the photographs carry the page.", "Image-first layouts with scroll-linked transitions and a quiet project index."], bg: "#191919", img: "img/ondra.webp", phone: "img/ondra-phone.webp" },
+    { name: "lumen festival", code: "LF", meta: "2024 · Event · Next.js", t: ["Site for a three-night light festival: programme, map and volunteer sign-up.", "The volunteer form handled the launch-week rush without losing a message."], bg: "#1a1024", img: "img/lumen.webp", phone: "img/lumen-phone.webp" },
+    { name: "fieldnote", code: "FN", meta: "2023 · Product · SvelteKit", t: ["Launch site for a field journal app used by ecologists and hikers.", "Motion sketches of the app explain features before anyone reads a word."], bg: "#16201a", img: "img/fieldnote.webp", phone: "img/fieldnote-phone.webp" }
   ];
   var SERVICES = [
     ["motion", "design", "Transitions and small interactions that guide the eye and give a site its rhythm."],
@@ -723,9 +718,15 @@
     if (drawIO) drawable.forEach(function (el) { drawIO.observe(el); });
   }
   /* Work: scroll-pinned on wide screens, buttons everywhere */
-  var work = $(".work"), shot = $(".p-shot"), mock = $("[data-mock]"), thumbs = $("[data-p-thumbs]");
+  var work = $(".work"), shot = $(".p-shot"), mock = $("[data-mock]"), phone = $("[data-phone]"), thumbs = $("[data-p-thumbs]");
   var pIdx = -1;
+  function shotImg(parent, src) {
+    var im = document.createElement("img");
+    im.src = src; im.alt = ""; im.loading = "lazy"; im.decoding = "async";
+    return parent.appendChild(im);
+  }
   PROJECTS.forEach(function (p, i) {
+    p.els = [shotImg(mock, p.img), shotImg(phone, p.phone)];
     var b = document.createElement("button");
     b.type = "button";
     b.className = "b";
@@ -740,10 +741,8 @@
     var first = pIdx === -1;
     pIdx = i;
     var p = PROJECTS[i];
-    shot.style.setProperty("--m-bg", p.c[0]);
-    shot.style.setProperty("--m-a", p.c[1]);
-    shot.style.setProperty("--m-c", p.c[2]);
-    mock.className = "mock v" + (i % 3);
+    shot.style.setProperty("--m-bg", p.bg);
+    PROJECTS.forEach(function (q, j) { q.els.forEach(function (im) { im.classList.toggle("on", j === i); }); });
     $("[data-p-name]").textContent = p.name;
     $("[data-p-num]").textContent = String(i + 1).padStart(2, "0") + " / " + String(PROJECTS.length).padStart(2, "0");
     $("[data-p-kind]").textContent = p.meta;
